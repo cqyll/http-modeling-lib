@@ -271,6 +271,21 @@ public final class ContentType {
 		
 	}
 	
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(getType());
+		
+		if (!getParameters().isEmpty()) {
+			for (Parameter p: getParameters()) {
+				sb.append("; ");
+				sb.append(p.getName());
+				sb.append("=");
+				sb.append(p.getValue());
+			}
+		}
+		return sb.toString();
+	}
 	// helpers
 
 	private Map.Entry<String, String> splitSubtype() {
